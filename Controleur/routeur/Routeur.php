@@ -9,12 +9,14 @@ require 'controleur/ControleurContact.php' ;
 class Routeur {
 
 	private $controleurContact;
+	private $controleurAuthentification;
 
 	/**
 	 * Constructeur de la classe Routeur.
 	 */
 	public function __construct() {
 	    $this->controleurContact = new ControleurContact();
+	    $this->controleurAuthentification = new ControleurAuthentification();
 	}
 
 	/**
@@ -82,7 +84,7 @@ class Routeur {
 					throw new Exception("Action non valide !");
 				}
 			} else {
-				//$this->controleurAuthentification->ajoutAction();
+				$this->controleurAuthentification->authentificationAction();
 			}
 		} catch (Exception $e) {
 		    $this->erreur($e->getMessage());

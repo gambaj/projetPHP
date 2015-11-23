@@ -67,44 +67,4 @@ class Authentification {
 		$req = $connexion->prepare('INSERT INTO utilisateur (pseudo, password) VALUES(?, ?)');
 		$req->execute(array($pseudo, $password));
 	}
-
-	/**
-	 * Methode permettant de modifier un contact de la base.
-	 * @param  int $idContact [description]
-	 * @param  String $nom       le nouveau nom.
-	 * @param  String $prenom    le nouveau prenom.
-	 * @param  String $societe   la nouvelle societe.
-	 * @param  String $adresse   la nouvelle adresse.
-	 * @param  String $numero    le nouveau numero.
-	 * @param  String $email     la nouvelle adresse email.
-	 * @param  String $site      le nouveau site.
-	 * @param  String $type      le nouveau type.
-	 * @return true si la requete c'est bien passée.
-	 */
-	public function modifierContact($idContact, $nom, $prenom, $societe, $adresse, $numero, $email, $site, $type) {
-		$connexion = $this->bdd;
-		$req = $connexion->prepare('UPDATE contact set nom = :nouveauNom, prenom = :nouveauPrenom, societe = :nouvelleSociete, adresse = :nouvelleAdresse, numero = :nouveauNumero, email = :nouvelleEmail, site = :nouveauSite, type = :nouveauType where id = :id');
-		$req->execute(array(
-			'nouveauNom' => $nom, 
-			'nouveauPrenom' => $prenom, 
-			'nouvelleSociete' => $societe, 
-			'nouvelleAdresse' => $adresse, 
-			'nouveauNumero' => $numero, 
-			'nouvelleEmail' => $email, 
-			'nouveauSite' => $site, 
-			'nouveauType' => $type,
-			'id' => $idContact
-		));
-	}
-
-	/**
-	 * Methode permettant de supprimer un contact de la base.
-	 * @param  int $idContact l'id du contact à supprimer.
-	 * @return true si la requete c'est bien passée.
-	 */
-	public function supprimerContact($idContact) {
-		$connexion = $this->bdd;
-		$req = $connexion->prepare('delete from contact where id = ?');
-		$req->execute(array($idContact));
-	}
 }
