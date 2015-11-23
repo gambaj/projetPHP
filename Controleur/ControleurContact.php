@@ -1,8 +1,7 @@
 <?php
 
-require 'modele/Contact.php';
+require 'modele/classe/Contact.php';
 require 'modele/BaseDeDonnees.php';
-require 'vue/Vue.php';
 
 /**
  * Cette classe est le controleur d'un Contact et permet de gérer les differentes actions possibles.

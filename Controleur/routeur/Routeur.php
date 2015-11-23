@@ -1,5 +1,6 @@
 <?php
 
+require 'controleur/ControleurAuthentification.php' ;
 require 'controleur/ControleurContact.php' ;
 
 /**
@@ -81,7 +82,7 @@ class Routeur {
 					throw new Exception("Action non valide !");
 				}
 			} else {
-				$this->controleurContact->ajoutAction();
+				//$this->controleurAuthentification->ajoutAction();
 			}
 		} catch (Exception $e) {
 		    $this->erreur($e->getMessage());

@@ -69,7 +69,7 @@ class BaseDeDonnees {
 	}
 
 	/**
-	 * Methode permettant d'ajouter un contact de la base.
+	 * Methode permettant d'ajouter un contact dans la base.
 	 * @param  String $nom       le nom.
 	 * @param  String $prenom    le prenom.
 	 * @param  String $societe   la societe.

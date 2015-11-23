@@ -16,7 +16,7 @@ class Contact {
 
 	/**
 	 * Constructeur de la classe Cons
-	 * @param String $nom le nom de la classe.
+	 * @param String $nom le nom du contact.
 	 */
 	public function __construct($nom) {
 		$this->nom = $nom;
