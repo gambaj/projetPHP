@@ -1,16 +1,25 @@
 <?php
 
 require 'controleur/ControleurContact.php' ;
-//require 'vue/Vue.php';
 
+/**
+ * Cette classe represente le routeur principal de l'application.
+ */
 class Routeur {
 
 	private $controleurContact;
 
+	/**
+	 * Constructeur de la classe Routeur.
+	 */
 	public function __construct() {
 	    $this->controleurContact = new ControleurContact();
 	}
 
+	/**
+	 * Méthode permettant de gérer les routes et d'appeler les bons controleurs en fonction des URL.
+	 * Vue la bonne vue générée.
+	 */
 	public function routerRequete() {
 		try {
 			if (isset($_GET['action'])) {
@@ -79,6 +88,11 @@ class Routeur {
 		}
 	}
 
+	/**
+	 * Methode permettant d'afficher les messages d'erreur.
+	 * @param String $message le message d'erreur à afficher.
+	 * @return Vue la vue d'un message d'erreur.
+	 */
 	public function erreur($message) {
 		$vue = new Vue("vueErreur");
     	$vue->generer(array('message' => $message));
