@@ -31,14 +31,42 @@ class Routeur {
 							$this->controleurContact->modificationContactAction($idContact);
 						}
 			          	else {
-			          		throw new Exception("Identifiant de billet non valide !");
+			          		throw new Exception("Identifiant de contact non valide !");
 			          	}
 					}
 					else {
-						throw new Exception("Identifiant de billet non renseigné !");
+						throw new Exception("Identifiant de contact non renseigné !");
 					}
 				} else if ($_GET['action'] == 'notification')  {
-					$this->controleurContact->notficationAction();
+					$this->controleurContact->notificationAction();
+				} 
+				else if ($_GET['action'] == 'miseAJour') {
+					if (isset($_GET['id'])) {
+						$idContact = intval($_GET['id']);
+						if ($idContact != 0) {
+							$this->controleurContact->miseAJourContactAction($idContact);
+						}
+			          	else {
+			          		throw new Exception("Identifiant de contact non valide !");
+			          	}
+					}
+					else {
+						throw new Exception("Identifiant de contact non renseigné !");
+					}
+				}
+				else if ($_GET['action'] == 'suppression') {
+					if (isset($_GET['id'])) {
+						$idContact = intval($_GET['id']);
+						if ($idContact != 0) {
+							$this->controleurContact->suppressionContactAction($idContact);
+						}
+			          	else {
+			          		throw new Exception("Identifiant de contact non valide !");
+			          	}
+					}
+					else {
+						throw new Exception("Identifiant de contact non renseigné !");
+					}
 				}
 				else {
 					throw new Exception("Action non valide !");

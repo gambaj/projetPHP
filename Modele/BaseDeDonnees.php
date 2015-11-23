@@ -53,10 +53,25 @@ class BaseDeDonnees {
 		$req->execute(array($nom, $prenom, $societe, $adresse, $numero, $email, $site, $type));
 	}
 
-	public function modifierContact($nom, $prenom, $societe, $adresse, $numero, $email, $site, $type) {
+	public function modifierContact($idContact, $nom, $prenom, $societe, $adresse, $numero, $email, $site, $type) {
 		$connexion = $this->bdd;
-		$req = $connexion->prepare('INSERT INTO contact (nom, prenom, societe, adresse, numero, email, site, type) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
-		$req->execute(array($nom, $prenom, $societe, $adresse, $numero, $email, $site, $type));
+		$req = $connexion->prepare('UPDATE contact set nom = :nouveauNom, prenom = :nouveauPrenom, societe = :nouvelleSociete, adresse = :nouvelleAdresse, numero = :nouveauNumero, email = :nouvelleEmail, site = :nouveauSite, type = :nouveauType where id = :id');
+		$req->execute(array(
+			'nouveauNom' => $nom, 
+			'nouveauPrenom' => $prenom, 
+			'nouvelleSociete' => $societe, 
+			'nouvelleAdresse' => $adresse, 
+			'nouveauNumero' => $numero, 
+			'nouvelleEmail' => $email, 
+			'nouveauSite' => $site, 
+			'nouveauType' => $type,
+			'id' => $idContact
+		));
 	}
 
+	public function supprimerContact($idContact) {
+		$connexion = $this->bdd;
+		$req = $connexion->prepare('delete from contact where id = ?');
+		$req->execute(array($idContact));
+	}
 }

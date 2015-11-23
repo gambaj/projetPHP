@@ -6,7 +6,7 @@ require 'vue/Vue.php';
 
 class ControleurContact {
 
-	private $bdd;
+	private $baseDeDonnees;
 
 	public function __construct() {
 
@@ -19,7 +19,7 @@ class ControleurContact {
     	$vue->generer(array());
 	}
 
-	public function notficationAction() {
+	public function notificationAction() {
 
 	    $this->baseDeDonnees->ajouterContact($_POST['nom'], $_POST['prenom'], $_POST['societe'], $_POST['adresse'], $_POST['numero'], $_POST['email'], $_POST['site'], $_POST['type']);
 	    $vue = new Vue("vueNotification");
@@ -53,6 +53,18 @@ class ControleurContact {
 
 	    $contact = $this->baseDeDonnees->getContact($id);
 	    $vue = new Vue("vueModificationContact");
-    	$vue->generer(array('contact' => $contact));
+    	$vue->generer(array('contact' => $contact, 'id' => $id));
+	}
+
+	public function miseAJourContactAction($id) {
+
+		$this->baseDeDonnees->modifierContact($id, $_POST['nom'], $_POST['prenom'], $_POST['societe'], $_POST['adresse'], $_POST['numero'], $_POST['email'], $_POST['site'], $_POST['type']);
+		$this->listeContactAction();
+	}
+
+	public function suppressionContactAction($id) {
+
+		$this->baseDeDonnees->supprimerContact($id);
+		$this->listeContactAction();
 	}
 }
