@@ -15,7 +15,7 @@
     		<div class="centre">
 	    		<div class="description">
 					<h2>Répertoire</h2>
-					<p>Liste de contact.</p>
+					<p>Liste de contact (<?php echo $nombreContact . ' contacts)'?>.</p>
 				</div>
 
 	    		<ul>
@@ -28,7 +28,19 @@
 	    		</ul>
 
 		    </div>
-		    <div id="footer"><p>Systeme de pagination</p></div>
+		    <div id="footer">
+		    	<p>
+		    		<?php 
+		    			for ($i=1; $i<=$nombrePage; $i++) {
+		    				if ($i == $pageCourante) {
+		    					echo $i . ' ';
+		    				} else {
+		    					echo '<a href="index.php?action=liste&page=' . $i . '">' . $i . ' </a>';
+		    				}
+	    				}
+		    		?>
+		    	</p>
+		    </div>
 		</div>
 		<img id="bottom" src="vue/image/bottom.png" alt="">
     </body>

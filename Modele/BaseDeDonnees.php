@@ -11,10 +11,17 @@ class BaseDeDonnees {
 		}
 	}
 
-	public function getContacts() {
+	public function getNombreContact() {
+		$connexion = $this->bdd;
+		$req = $connexion->query("select count(id) as nombre from contact");
+		$resultat = $req->fetch();
+		return $resultat['nombre'];
+	}
+
+	public function getContacts($contactParPage, $pageCourante) {
 
 		$connexion = $this->bdd;
-		$req = $connexion->query('select * from contact');
+		$req = $connexion->query("select * from contact order by prenom limit " . (($pageCourante-1)*$contactParPage) . ",$contactParPage");
 		$contacts = array();
 		while ($contactData = $req->fetch()) {
 

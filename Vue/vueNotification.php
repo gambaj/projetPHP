@@ -20,7 +20,7 @@
 
 		    	<div class="form_success">
 			        <?php
-						echo '<p>Le contact ' . $_POST['prenom'] . ' ' . $_POST['nom'] . ' a bien ete ajoute !</p>';
+						echo '<p>Le contact ' . $prenom . ' ' . $nom . ' a bien ete ajoute !</p>';
 					?>
 				</div>
 			</div>
