@@ -1,21 +1,21 @@
 <?php
 
 require 'modele/classe/Contact.php';
-require 'modele/BaseDeDonnees.php';
+require 'modele/ListeDeContact.php';
 
 /**
  * Cette classe est le controleur d'un Contact et permet de gérer les differentes actions possibles.
  */
 class ControleurContact {
 
-	private $baseDeDonnees;
+	private $listeDeContact;
 
 	/**
 	 * Constructeur de la classe ControleurContact.
 	 */
 	public function __construct() {
 
-    	$this->baseDeDonnees = new BaseDeDonnees();
+    	$this->listeDeContact = new ListeDeContact();
 	}
 
 	/**
@@ -47,7 +47,7 @@ class ControleurContact {
         	session_start(); 
     	}
 		if (isset($_SESSION['pseudo'])) {
-		    $this->baseDeDonnees->ajouterContact($_POST['nom'], $_POST['prenom'], $_POST['societe'], $_POST['adresse'], $_POST['numero'], $_POST['email'], $_POST['site'], $_POST['type']);
+		    $this->listeDeContact->ajouterContact($_POST['nom'], $_POST['prenom'], $_POST['societe'], $_POST['adresse'], $_POST['numero'], $_POST['email'], $_POST['site'], $_POST['type']);
 		    $vue = new Vue("vueNotification");
 	    	$vue->generer(array('nom' => $_POST['nom'], 'prenom' => $_POST['prenom']));
     	} else {
@@ -68,7 +68,7 @@ class ControleurContact {
     	}
 		if (isset($_SESSION['pseudo'])) {
 			$contactParPage = 5;
-		    $nombreContact = $this->baseDeDonnees->getNombreContact();
+		    $nombreContact = $this->listeDeContact->getNombreContact();
 			$nombrePage = ceil($nombreContact/$contactParPage);
 
 			if (isset($_GET['page']) && $_GET['page'] <= $nombrePage && $_GET['page'] > 0) {
@@ -76,7 +76,7 @@ class ControleurContact {
 			} else {
 				$pageCourante = 1;
 			}
-		    $contacts = $this->baseDeDonnees->getContacts($contactParPage, $pageCourante);
+		    $contacts = $this->listeDeContact->getContacts($contactParPage, $pageCourante);
 		    
 		    $vue = new Vue("vueListeContact");
 	    	$vue->generer(array('nombreContact' => $nombreContact, 'nombrePage' => $nombrePage, 'pageCourante' => $pageCourante, 'contacts' => $contacts));
@@ -98,7 +98,7 @@ class ControleurContact {
         	session_start(); 
     	}
 		if (isset($_SESSION['pseudo'])) {
-		    $contact = $this->baseDeDonnees->getContact($id);
+		    $contact = $this->listeDeContact->getContact($id);
 		    $vue = new Vue("vueModificationContact");
 	    	$vue->generer(array('contact' => $contact, 'id' => $id));
     	} else {
@@ -119,7 +119,7 @@ class ControleurContact {
         	session_start(); 
     	}
 		if (isset($_SESSION['pseudo'])) {
-			$this->baseDeDonnees->modifierContact($id, $_POST['nom'], $_POST['prenom'], $_POST['societe'], $_POST['adresse'], $_POST['numero'], $_POST['email'], $_POST['site'], $_POST['type']);
+			$this->listeDeContact->modifierContact($id, $_POST['nom'], $_POST['prenom'], $_POST['societe'], $_POST['adresse'], $_POST['numero'], $_POST['email'], $_POST['site'], $_POST['type']);
 			$this->listeContactAction();
 		} else {
 			$message = 'Vous devez vous connecter !';
@@ -139,7 +139,7 @@ class ControleurContact {
         	session_start(); 
     	}
 		if (isset($_SESSION['pseudo'])) {
-			$this->baseDeDonnees->supprimerContact($id);
+			$this->listeDeContact->supprimerContact($id);
 			$this->listeContactAction();
 		} else {
 			$message = 'Vous devez vous connecter !';

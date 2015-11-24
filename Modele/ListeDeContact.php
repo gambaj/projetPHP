@@ -2,12 +2,12 @@
 /**
  * Cette classe est le modèle de Contact et permet la liaison à la table Contact base de données.
  */
-class BaseDeDonnees {
+class ListeDeContact {
 
 	private $bdd;
 
 	/**
-	 * Constructeur de la classe BaseDeDonnees.
+	 * Constructeur de la classe ListeDeContact.
 	 */
 	public function __construct() {
 		try {
