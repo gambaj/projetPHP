@@ -23,13 +23,13 @@
 					<li id="li_1" >
 						<label class="description" for="pseudo">Pseudo </label>
 						<div>
-							<input id="pseudo" name="pseudo" class="element text medium" type="text" maxlength="255" value=""/> 
+							<input id="pseudo" name="pseudo" class="element text medium" type="text" maxlength="255" value="" required/> 
 						</div> 
 					</li>		
 					<li id="li_2" >
 						<label class="description" for="password">Mot de passe </label>
 						<div>
-							<input id="password" name="password" class="element text medium" type="password" maxlength="255" value=""/> 
+							<input id="password" name="password" class="element text medium" type="password" maxlength="255" value="" required/> 
 						</div> 
 					</li>		
 					<li class="buttons">

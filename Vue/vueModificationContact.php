@@ -63,9 +63,9 @@
                     <li id="li_7" >
                         <label class="description" for="type">Type de contact </label>
                         <span>
-                            <input id="particulier" name="type" class="element radio" type="radio" value="particulier" checked="checked"/>
+                            <input id="particulier" name="type" class="element radio" type="radio" value="particulier"  <?php if ($contact->getType() == 'particulier') { echo 'checked' ;}?>/>
                             <label class="choice" for="particulier">Particulier</label>
-                            <input id="professionnel" name="type" class="element radio" type="radio" value="professionnel" />
+                            <input id="professionnel" name="type" class="element radio" type="radio" value="professionnel"  <?php if ($contact->getType() == 'professionnel') { echo 'checked' ;}?>/>
                             <label class="choice" for="professionnel">Professionnel</label>
                         </span> 
                     </li>           
