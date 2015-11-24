@@ -21,9 +21,10 @@ class ListeDeContact {
 	 * Methode retournant le nombre de contact.
 	 * @return le nombre de contact
 	 */
-	public function getNombreContact() {
+	public function getNombreContact($utilisateur) {
 		$connexion = $this->bdd;
-		$req = $connexion->query("select count(id) as nombre from contact");
+		$req = $connexion->prepare('select count(id) as nombre from contact where utilisateur = ?');
+		$req->execute(array($utilisateur));
 		$resultat = $req->fetch();
 		return $resultat['nombre'];
 	}
@@ -34,10 +35,12 @@ class ListeDeContact {
 	 * @param  int $pageCourante   le numero de la page courante.
 	 * @return array Contact un tableau d'objet Contact retournée par la requete SQL.
 	 */
-	public function getContacts($contactParPage, $pageCourante) {
+	public function getContacts($utilisateur, $contactParPage, $pageCourante) {
 
 		$connexion = $this->bdd;
-		$req = $connexion->query("select * from contact order by prenom limit " . (($pageCourante-1)*$contactParPage) . ",$contactParPage");
+		$req = $connexion->prepare("select * from contact where utilisateur = ? order by prenom limit " . (($pageCourante-1)*$contactParPage) . ",$contactParPage");
+		$req->execute(array($utilisateur));
+
 		$contacts = array();
 		while ($contactData = $req->fetch()) {
 
@@ -80,10 +83,10 @@ class ListeDeContact {
 	 * @param  String $type      le type.
 	 * @return true si la requete c'est bien passée.
 	 */
-	public function ajouterContact($nom, $prenom, $societe, $adresse, $numero, $email, $site, $type) {
+	public function ajouterContact($utilisateur, $nom, $prenom, $societe, $adresse, $numero, $email, $site, $type) {
 		$connexion = $this->bdd;
-		$req = $connexion->prepare('INSERT INTO contact (nom, prenom, societe, adresse, numero, email, site, type) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
-		$req->execute(array($nom, $prenom, $societe, $adresse, $numero, $email, $site, $type));
+		$req = $connexion->prepare('INSERT INTO contact (utilisateur, nom, prenom, societe, adresse, numero, email, site, type) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)');
+		$req->execute(array($utilisateur, $nom, $prenom, $societe, $adresse, $numero, $email, $site, $type));
 	}
 
 	/**

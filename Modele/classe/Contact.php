@@ -5,6 +5,7 @@
 class Contact {
 
 	private $id;
+	private $utilisateur;
 	private $prenom;
 	private $nom;
 	private $societe;
@@ -15,7 +16,7 @@ class Contact {
 	private $site;
 
 	/**
-	 * Constructeur de la classe Cons
+	 * Constructeur de la classe Contact.
 	 * @param String $nom le nom du contact.
 	 */
 	public function __construct($nom) {
@@ -44,6 +45,14 @@ class Contact {
 	 */
 	public function getId() {
 		return $this->id;
+	}
+
+	/**
+	 * Getter de l'utilisateur d'un contact.
+	 * @return utilisateur du contact.
+	 */
+	public function getUtilisateur() {
+		return $this->utilisateur;
 	}
 
 	/**
@@ -116,6 +125,14 @@ class Contact {
 	 */
 	public function setId($id) {
 		$this->id = $id;
+	}
+
+	/**
+	 * Setter de l'utilisateur d'un contact.
+	 * @param String $utilisateur l'utilisateur du contact.
+	 */
+	public function setUtilisateur($utilisateur) {
+		$this->utilisateur = $utilisateur;
 	}
 
 	/**

@@ -47,7 +47,7 @@ class ControleurContact {
         	session_start(); 
     	}
 		if (isset($_SESSION['pseudo'])) {
-		    $this->listeDeContact->ajouterContact($_POST['nom'], $_POST['prenom'], $_POST['societe'], $_POST['adresse'], $_POST['numero'], $_POST['email'], $_POST['site'], $_POST['type']);
+		    $this->listeDeContact->ajouterContact($_SESSION['pseudo'], $_POST['nom'], $_POST['prenom'], $_POST['societe'], $_POST['adresse'], $_POST['numero'], $_POST['email'], $_POST['site'], $_POST['type']);
 		    $vue = new Vue("vueNotification");
 	    	$vue->generer(array('nom' => $_POST['nom'], 'prenom' => $_POST['prenom']));
     	} else {
@@ -68,7 +68,7 @@ class ControleurContact {
     	}
 		if (isset($_SESSION['pseudo'])) {
 			$contactParPage = 5;
-		    $nombreContact = $this->listeDeContact->getNombreContact();
+		    $nombreContact = $this->listeDeContact->getNombreContact($_SESSION['pseudo']);
 			$nombrePage = ceil($nombreContact/$contactParPage);
 
 			if (isset($_GET['page']) && $_GET['page'] <= $nombrePage && $_GET['page'] > 0) {
@@ -76,7 +76,7 @@ class ControleurContact {
 			} else {
 				$pageCourante = 1;
 			}
-		    $contacts = $this->listeDeContact->getContacts($contactParPage, $pageCourante);
+		    $contacts = $this->listeDeContact->getContacts($_SESSION['pseudo'], $contactParPage, $pageCourante);
 		    
 		    $vue = new Vue("vueListeContact");
 	    	$vue->generer(array('nombreContact' => $nombreContact, 'nombrePage' => $nombrePage, 'pageCourante' => $pageCourante, 'contacts' => $contacts));
