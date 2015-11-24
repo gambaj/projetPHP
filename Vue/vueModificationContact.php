@@ -14,8 +14,8 @@
 
             <form id="form_1074181" class="appnitro"  method="post" action="index.php?action=miseAJour&id=<?php echo $id;?>">
                 <div class="description">
-                    <h2>Modification</h2>
-                    <p><?php echo $contact->getPrenom() . ' ' .  $contact->getNom() . ' (' . $id . ')'; ?></p>
+                    <h2>Modification de <?php echo $contact->getPrenom() . ' ' .  $contact->getNom() . ' (' . $id . ')'; ?></h2>
+                    <p><a href="index.php?action=deconnexion">Se deconnecter</a></p>
                 </div>
 
                 <ul>
@@ -70,7 +70,7 @@
                         </span> 
                     </li>           
                     <li class="buttons">
-                        <input id="saveForm" class="button_text" type="submit" name="submit" value="Ajouter" />
+                        <input id="saveForm" class="button_text" type="submit" name="submit" value="Modifier" />
                     </li>
                 </ul>
             </form>
@@ -78,6 +78,13 @@
                 <ul>
                     <li class="buttons">
                         <input type="submit" class="button_text" value="Supprimer" />
+                    </li>
+                </ul>
+            </form>
+            <form class="appnitro">
+                <ul>
+                    <li class="buttons">
+                        <input type="button" value="Retour" onclick="history.go(-1)">
                     </li>
                 </ul>
             </form>

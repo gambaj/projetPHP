@@ -39,7 +39,7 @@ class Authentification {
 	 * Methode retournant un objet Utilisateur.
 	 * @param  String $pseudo le pseudo de l'utilisateur cherché.
 	 * @param  String $password le password de l'utilisateur cherché.
-	 * @return String l'utilisateur representant le pseudo et password.
+	 * @return String l'utilisateur representant le pseudo et password s'il existe, null sinon.
 	 */
 	public function getUtilisateur($pseudo, $password) {
 
@@ -51,9 +51,9 @@ class Authentification {
 			$utilisateurData = $req->fetch();
 			$utilisateur = new Utilisateur($utilisateurData['pseudo']);
 			$utilisateur->hydrate($utilisateurData);
+			return $utilisateur;
 		}
-	
-		return $utilisateur;
+		return null;
 	}
 
 	/**

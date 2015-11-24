@@ -18,8 +18,10 @@
 					<p><?php echo $message; ?></p>
 				</div>
 
+            <form>
+                <input type="button" value="Retour" onclick="history.go(-1)">
+            </form>
 		    </div>
-		    <div id="footer"><p>Systeme de pagination</p></div>
 		</div>
 		<img id="bottom" src="vue/image/bottom.png" alt="">
     </body>

@@ -14,8 +14,9 @@
 
     		<div class="centre">
 	    		<div class="description">
-					<h2>Répertoire</h2>
-					<p>Liste de contact (<?php echo $nombreContact . ' contacts)'?>.</p>
+					<h2>Répertoire de <?php echo $_SESSION['pseudo'] . ' : ' . $nombreContact . ' contacts'?></h2>
+					<p><a href="index.php?action=deconnexion">Se deconnecter</a></p>
+					<p><a href="index.php?action=ajout">Ajouter nouveau contact</a><br /></p>
 				</div>
 
 	    		<ul>

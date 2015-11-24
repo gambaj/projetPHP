@@ -16,6 +16,8 @@
 		    	<div class="description">
 					<h2>Contact ajoute</h2>
 					<p>Ajout d'un nouveau contact dans son repertoire personnel.</p>
+					<p><a href="index.php?action=ajout">Ajouter un contact</a><br />
+					<p><a href="index.php?action=liste&page=0">Liste de contact</a><br />
 				</div>
 
 		    	<div class="form_success">

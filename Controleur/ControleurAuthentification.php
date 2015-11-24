@@ -27,4 +27,47 @@ class ControleurAuthentification {
 		$vue = new Vue("vueAuthentification");
     	$vue->generer(array());
 	}
+
+	public function validationAuthentificationAction() {
+
+		$utilisateur = $this->authentification->getUtilisateur($_POST['pseudo'], $_POST['password']);
+		if (isset($utilisateur)) {
+			if(!isset($_SESSION)) { 
+        		session_start(); 
+    		}
+			$_SESSION['pseudo'] = $utilisateur->getPseudo();
+			$controleurContact = new controleurContact();
+			$controleurContact->listeContactAction();
+		} else {
+			$message = 'Pseudo ou mot de passe incorrect !';
+			$vue = new Vue("vueErreur");
+    		$vue->generer(array('message' => $message));
+		}
+	}
+
+	public function creationUtilisateurAction() {
+
+		$vue = new Vue("vueCreationUtilisateur");
+    	$vue->generer(array());
+	}
+
+	public function validationUtilisateurAction() {
+
+		if ($_POST['password1'] == $_POST['password2']) {
+			$this->authentification->ajouterUtilisateur($_POST['pseudo'], $_POST['password1']);
+			$this->authentificationAction();
+		} else {
+			$message = 'Les mots de passe ne sont pas pareils !';
+			$vue = new Vue("vueErreur");
+    		$vue->generer(array('message' => $message));
+		}
+	}
+
+	public function deconnexionAction() {
+		if(!isset($_SESSION)) { 
+        	session_start(); 
+    	}
+		unset($_SESSION['pseudo']);
+		$this->authentificationAction();
+	}
 }

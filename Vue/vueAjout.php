@@ -14,8 +14,9 @@
 
         	<form id="form_1074181" class="appnitro"  method="post" action="index.php?action=notification">
                 <div class="description">
-					<h2>Nouveau contact</h2>
-					<p>Ajout d'un nouveau contact dans son repertoire personnel.</p>
+					<h2>Ajouter nouveau contact</h2>
+					<p><a href="index.php?action=deconnexion">Se deconnecter</a></p>
+					<p><a href="index.php?action=liste&page=0">Liste de contact</a><br />
 				</div>	
 
 				<ul>
