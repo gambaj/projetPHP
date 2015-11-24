@@ -28,6 +28,10 @@ class ControleurAuthentification {
     	$vue->generer(array());
 	}
 
+	/**
+	 * Méthode permettant de tester si le pseudo et mot de passe validés, sont corrects.
+	 * @return Vue la vue d'une liste de contact, sinon un message d'erreur.
+	 */
 	public function validationAuthentificationAction() {
 
 		$utilisateur = $this->authentification->getUtilisateur($_POST['pseudo'], $_POST['password']);
@@ -45,12 +49,20 @@ class ControleurAuthentification {
 		}
 	}
 
+	/**
+	 * Méthode permettant d'afficher la vue de creation de compte.
+	 * @return Vue la vue de creation de compte utilisateur.
+	 */
 	public function creationUtilisateurAction() {
 
 		$vue = new Vue("vueCreationUtilisateur");
     	$vue->generer(array());
 	}
 
+	/**
+	 * Méthode permettant de tester si les deux champs password sont identiques.
+	 * @return Vue la vue de l'authentification, sinon un message d'erreur.
+	 */
 	public function validationUtilisateurAction() {
 
 		if ($_POST['password1'] == $_POST['password2']) {
@@ -63,6 +75,10 @@ class ControleurAuthentification {
 		}
 	}
 
+	/**
+	 * Methode permettant a l'utilisateur de se deconnecter.
+	 * @return Vue la vue d'authentification.
+	 */
 	public function deconnexionAction() {
 		if(!isset($_SESSION)) { 
         	session_start(); 

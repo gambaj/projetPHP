@@ -4,7 +4,7 @@ require 'controleur/ControleurAuthentification.php' ;
 require 'controleur/ControleurContact.php' ;
 
 /**
- * Cette classe represente le routeur principal de l'application.
+ * Cette classe represente le routeur principal de l'application et permet d'utiliser les actions des bons controleurs en fonctions de l'url.
  */
 class Routeur {
 
@@ -85,6 +85,10 @@ class Routeur {
 	}
 
 
+	/**
+	 * Methode appelant l'action de liste du controleur Contact.
+	 * @return Vue la vue de liste de contact.
+	 */
 	public function liste() {
 		if (isset($_GET['page'])) {
 			$this->controleurContact->listeContactAction();
@@ -93,6 +97,10 @@ class Routeur {
 		}
 	}
 
+	/**
+	 * Methode appelant l'action de modification du controleur Contact.
+	 * @return Vue la vue de modification d'un contact.
+	 */
 	public function modification() {
 		if (isset($_GET['id'])) {
 			$idContact = intval($_GET['id']);
@@ -108,14 +116,26 @@ class Routeur {
 		}
 	}
 
+	/**
+	 * Methode appelant l'action d'ajout du controleur Contact.
+	 * @return Vue la vue d'ajout de contact.
+	 */
 	public function ajout() {
 		$this->controleurContact->ajoutAction();
 	}
 
+	/**
+	 * Methode appelant l'action de notification du controleur Contact.
+	 * @return Vue la vue de notification de contact.
+	 */
 	public function notification() {
 		$this->controleurContact->notificationAction();
 	}
 
+	/**
+	 * Methode appelant l'action de mise a jour du controleur Contact.
+	 * @return Vue la vue de mise a jour de contact.
+	 */
 	public function miseAJour() {
 		if (isset($_GET['id'])) {
 			$idContact = intval($_GET['id']);
@@ -131,6 +151,10 @@ class Routeur {
 		}
 	}
 
+	/**
+	 * Methode appelant l'action de suppression du controleur Contact.
+	 * @return Vue la vue de liste de contact.
+	 */
 	public function suppression() {
 		if (isset($_GET['id'])) {
 			$idContact = intval($_GET['id']);
@@ -146,22 +170,42 @@ class Routeur {
 		}
 	}
 
+	/**
+	 * Méthode appelant l'action d'authentification du controleur Authentification.
+	 * @return Vue la vue d'authentification de l'authentification.
+	 */
 	public function authentification() {
 		$this->controleurAuthentification->authentificationAction();
 	}
 
+	/**
+	 * Méthode appelant l'action de validation de l'authentification du controleur Authentification.
+	 * @return Vue la vue de liste de contact de contact.
+	 */
 	public function validationAuthentification() {
 		$this->controleurAuthentification->validationAuthentificationAction();
 	}
 
+	/**
+	 * Méthode appelant l'action de validation de l'utilisateur du controleur Authentification.
+	 * @return Vue la vue de validation de l'authentification de l'authentification.
+	 */
 	public function validationUtilisateur() {
 		$this->controleurAuthentification->validationUtilisateurAction();
 	}
 
+	/**
+	 * Méthode appelant l'action de creation d'utilisateur du controleur Authentification.
+	 * @return Vue la vue de creation d'utilisateur de l'authentification.
+	 */
 	public function creationUtilisateur() {
 		$this->controleurAuthentification->creationUtilisateurAction();
 	}
 
+	/**
+	 * Méthode appelant l'action de deconnexion d'utilisateur du controleur Authentification.
+	 * @return Vue la vue d'authentification' de l'authentification.
+	 */
 	public function deconnexion() {
 		$this->controleurAuthentification->deconnexionAction();
 	}
