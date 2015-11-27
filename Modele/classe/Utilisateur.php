@@ -2,81 +2,95 @@
 /**
  * Cette classe represente un utilisateur.
  */
-class Utilisateur {
+class Utilisateur
+{
+    private $id;
+    private $pseudo;
+    private $password;
 
-	private $id;
-	private $pseudo;
-	private $password;
+    /**
+     * Constructeur de la classe Utilisateur.
+     *
+     * @param String $pseudo le pseudo de l'utilisateur.
+     */
+    public function __construct($pseudo)
+    {
+        $this->pseudo = $pseudo;
+    }
 
-	/**
-	 * Constructeur de la classe Utilisateur.
-	 * @param String $pseudo le pseudo de l'utilisateur.
-	 */
-	public function __construct($pseudo) {
-		$this->pseudo = $pseudo;
-	}
+    /**
+     * Methode permettant de créer un objet Utilisateur à partir de la table Utilisateur de la base de données.
+     *
+     * @param array $donnees le tableau de champ de la table Utilisateur.
+     */
+    public function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value) {
+            $method = 'set'.ucfirst($key);
 
-	/**
-	 * Methode permettant de créer un objet Utilisateur à partir de la table Utilisateur de la base de données.
-	 * @param array $donnees le tableau de champ de la table Utilisateur.
-	 */
-	public function hydrate(array $donnees) {
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
+    }
 
-		foreach ($donnees as $key => $value) {
+    /**
+     * Getter de l'ID d'un utilisateur.
+     *
+     * @return id de l'utilisateur.
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-			$method = 'set'.ucfirst($key);
-       
-    		if (method_exists($this, $method)) {
-				$this->$method($value);
-    		}
-  		}
-	}
+    /**
+     * Getter du pseudo d'un utilisateur.
+     *
+     * @return pseudo du utilisateur.
+     */
+    public function getPseudo()
+    {
+        return $this->pseudo;
+    }
 
-	/**
-	 * Getter de l'ID d'un utilisateur.
-	 * @return id de l'utilisateur.
-	 */
-	public function getId() {
-		return $this->id;
-	}
+    /**
+     * Getter du mot de passe d'un utilisateur.
+     *
+     * @return password du utilisateur.
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
 
-	/**
-	 * Getter du pseudo d'un utilisateur.
-	 * @return pseudo du utilisateur.
-	 */
-	public function getPseudo() {
-		return $this->pseudo;
-	}
+    /**
+     * Setter de l'id d'un utilisateur.
+     *
+     * @param int $id l'id du utilisateur.
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
-	/**
-	 * Getter du mot de passe d'un utilisateur.
-	 * @return password du utilisateur.
-	 */
-	public function getPassword() {
-		return $this->password;
-	}
+    /**
+     * Setter du pseudo d'un utilisateur.
+     *
+     * @param String $pseudo le pseudo du utilisateur.
+     */
+    public function setPseudo($pseudo)
+    {
+        $this->pseudo = $pseudo;
+    }
 
-	/**
-	 * Setter de l'id d'un utilisateur.
-	 * @param int $id l'id du utilisateur.
-	 */
-	public function setId($id) {
-		$this->id = $id;
-	}
-
-	/**
-	 * Setter du pseudo d'un utilisateur.
-	 * @param String $pseudo le pseudo du utilisateur.
-	 */
-	public function setPseudo($pseudo) {
-		$this->pseudo = $pseudo;
-	}
-
-	/**
-	 * Setter du mot de passe d'un utilisateur.
-	 * @param String $password le password du utilisateur.
-	 */
-	public function setNom($password) {
-		$this->password = $password;
-	}
+    /**
+     * Setter du mot de passe d'un utilisateur.
+     *
+     * @param String $password le password du utilisateur.
+     */
+    public function setNom($password)
+    {
+        $this->password = $password;
+    }
 }

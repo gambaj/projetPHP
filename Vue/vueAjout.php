@@ -23,11 +23,11 @@
 					<li id="li_1" >
 						<label class="description" for="prenom">Contact*</label>
 						<span>
-							<input id="prenom" name= "prenom" class="element text" maxlength="255" size="8" value=""/>
+							<input id="prenom" name= "prenom" class="element text" maxlength="255" size="8" value="" pattern="[a-zA-Z ]*"/>
 							<label>Prenom</label>
 						</span>
 						<span>
-							<input id="nom" name= "nom" class="element text" maxlength="255" size="14" value="" required/>
+							<input id="nom" name= "nom" class="element text" maxlength="255" size="14" value="" pattern="[a-zA-Z ]*" required/>
 							<label>Nom*</label>
 						</span> 
 					</li>
@@ -46,7 +46,7 @@
 					<li id="li_4" >
 						<label class="description" for="numero">Numéro de téléphone </label>
 						<div>
-							<input id="numero" name="numero" class="element text medium" type="text" maxlength="255" value=""/> 
+							<input id="numero" name="numero" class="element text medium" type="text" maxlength="255" value="" pattern="[0-9]*"/> 
 						</div> 
 					</li>		
 					<li id="li_5" >

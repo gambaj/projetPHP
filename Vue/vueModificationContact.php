@@ -14,7 +14,7 @@
 
             <form id="form_1074181" class="appnitro"  method="post" action="index.php?action=miseAJour&id=<?php echo $id;?>">
                 <div class="description">
-                    <h2>Modification de <?php echo $contact->getPrenom() . ' ' .  $contact->getNom() . ' (' . $id . ')'; ?></h2>
+                    <h2>Modification de <?php echo $contact->getPrenom().' '.$contact->getNom().' ('.$id.')'; ?></h2>
                     <p><a href="index.php?action=deconnexion">Se deconnecter</a></p>
                 </div>
 
@@ -22,11 +22,11 @@
                     <li id="li_1" >
                         <label class="description" for="prenom">Contact*</label>
                         <span>
-                            <input id="prenom" name= "prenom" class="element text" maxlength="255" size="8" value="<?php echo $contact->getPrenom();?>"/>
+                            <input id="prenom" name= "prenom" class="element text" maxlength="255" size="8" pattern="[a-zA-Z ]*" value="<?php echo $contact->getPrenom();?>"/>
                             <label>Prenom</label>
                         </span>
                         <span>
-                            <input id="nom" name= "nom" class="element text" maxlength="255" size="14" value="<?php echo $contact->getNom();?>" required/>
+                            <input id="nom" name= "nom" class="element text" maxlength="255" size="14" pattern="[a-zA-Z ]*" value="<?php echo $contact->getNom();?>" required/>
                             <label>Nom*</label>
                         </span> 
                     </li>
@@ -45,7 +45,7 @@
                     <li id="li_4" >
                         <label class="description" for="numero">Numéro de téléphone </label>
                         <div>
-                            <input id="numero" name="numero" class="element text medium" type="text" maxlength="255" value="<?php echo $contact->getNumero();?>"/> 
+                            <input id="numero" name="numero" class="element text medium" type="text" maxlength="255" pattern="[0-9]*" value="<?php echo $contact->getNumero();?>"/> 
                         </div> 
                     </li>       
                     <li id="li_5" >
@@ -63,14 +63,18 @@
                     <li id="li_7" >
                         <label class="description" for="type">Type de contact </label>
                         <span>
-                            <input id="particulier" name="type" class="element radio" type="radio" value="particulier"  <?php if ($contact->getType() == 'particulier') { echo 'checked' ;}?>/>
+                            <input id="particulier" name="type" class="element radio" type="radio" value="particulier"  <?php if ($contact->getType() == 'particulier') {
+    echo 'checked';
+}?>/>
                             <label class="choice" for="particulier">Particulier</label>
-                            <input id="professionnel" name="type" class="element radio" type="radio" value="professionnel"  <?php if ($contact->getType() == 'professionnel') { echo 'checked' ;}?>/>
+                            <input id="professionnel" name="type" class="element radio" type="radio" value="professionnel"  <?php if ($contact->getType() == 'professionnel') {
+    echo 'checked';
+}?>/>
                             <label class="choice" for="professionnel">Professionnel</label>
                         </span> 
                     </li>           
                     <li class="buttons">
-                        <input id="saveForm" class="button_text" type="submit" name="submit" value="Modifier" />
+                        <input id="saveForm" class="button_text" type="submit" name="submit" value="Enregistrer" />
                     </li>
                 </ul>
             </form>
@@ -78,13 +82,6 @@
                 <ul>
                     <li class="buttons">
                         <input type="submit" class="button_text" value="Supprimer" />
-                    </li>
-                </ul>
-            </form>
-            <form class="appnitro">
-                <ul>
-                    <li class="buttons">
-                        <input type="button" value="Retour" onclick="history.go(-1)">
                     </li>
                 </ul>
             </form>

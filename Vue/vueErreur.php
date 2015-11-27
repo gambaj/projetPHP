@@ -16,6 +16,7 @@
 	    		<div class="description">
 					<h2>Erreur</h2>
 					<p><?php echo $message; ?></p>
+                    <p><a href="index.php?action=authentification">Accueil</a><br /></p>
 				</div>
 
             <form>

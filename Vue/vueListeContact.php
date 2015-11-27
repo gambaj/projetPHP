@@ -14,32 +14,32 @@
 
     		<div class="centre">
 	    		<div class="description">
-					<h2>Répertoire de <?php echo $_SESSION['pseudo'] . ' : ' . $nombreContact . ' contacts'?></h2>
+					<h2>Répertoire de <?php echo $_SESSION['pseudo'].' : '.$nombreContact.' contacts'?></h2>
 					<p><a href="index.php?action=deconnexion">Se deconnecter</a></p>
 					<p><a href="index.php?action=ajout">Ajouter nouveau contact</a><br /></p>
 				</div>
 
 	    		<ul>
 	    		<?php
-						
-	    			foreach ($contacts as $contact) {
-	    				echo '<li><a href="index.php?action=modification&id=' . $contact->getId() . '"> ' . $contact->getPrenom() . ' ' .  $contact->getNom() . '</a></li>';  
-	    			}
-	    		?>
+
+                    foreach ($contacts as $contact) {
+                        echo '<li><a href="index.php?action=modification&id='.$contact->getId().'"> '.$contact->getPrenom().' '.$contact->getNom().'</a></li>';
+                    }
+                ?>
 	    		</ul>
 
 		    </div>
 		    <div id="footer">
 		    	<p>
 		    		<?php 
-		    			for ($i=1; $i<=$nombrePage; $i++) {
-		    				if ($i == $pageCourante) {
-		    					echo $i . ' ';
-		    				} else {
-		    					echo '<a href="index.php?action=liste&page=' . $i . '">' . $i . ' </a>';
-		    				}
-	    				}
-		    		?>
+                        for ($i = 1; $i <= $nombrePage; ++$i) {
+                            if ($i == $pageCourante) {
+                                echo $i.' ';
+                            } else {
+                                echo '<a href="index.php?action=liste&page='.$i.'">'.$i.' </a>';
+                            }
+                        }
+                    ?>
 		    	</p>
 		    </div>
 		</div>
